@@ -1,0 +1,37 @@
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+.panel {
+  height: 100vh;
+}
+
+.module_3_wrapper {
+  height: 100vh;
+  overflow-x: hidden;
+}
+
+.module_3 {
+  display: flex;
+  width: 300vw;
+}
+
+.slides {
+  width: calc(100vw - 40px);
+  margin: 20px;
+}
+
+.flex {
+  display: flex;
+  justify-content: space-between;
+}
+
+.flex-child {
+  width: 45%;
+  height: 50vh;
+  background: #eee;
+  margin: 10px;
+  border-radius: 10px;
+}
