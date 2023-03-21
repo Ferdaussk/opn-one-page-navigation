@@ -1,4 +1,0 @@
-
-var MagicScrollOptions = {
-  draggable: true
-  };

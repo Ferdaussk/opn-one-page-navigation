@@ -57,17 +57,8 @@ class Classopageneffective {
 
 	//css-js-link-here
 	public function opagen_all_assets_for_the_public(){
-		// wp_enqueue_style( 'opagen-effective-style', plugin_dir_url( __FILE__ ) . 'assets/public/css/style.css', null, '1.0', 'all' );
-		// wp_enqueue_style( 'opagen-effective-magicscroll', plugin_dir_url( __FILE__ ) . 'assets/public/css/magicscroll.css', null, '1.0', 'all' );
-
-		wp_enqueue_style( 'opagen-effective-design', plugin_dir_url( __FILE__ ) . 'assets/public/css/design.css', null, '1.0', 'all' );
-
-		wp_enqueue_script( 'opagen-effective-ajax', 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js', array('jquery'), '1.0', true );
-		wp_enqueue_script( 'opagen-effective-logic', plugin_dir_url( __FILE__ ) . 'assets/public/js/logic.js', array('jquery'), '1.0', true );
-
+		wp_enqueue_style( 'opagen-effective-style', plugin_dir_url( __FILE__ ) . 'assets/public/css/style.css', null, '1.0', 'all' );
 		// wp_enqueue_script( 'opagen-effective-script', plugin_dir_url( __FILE__ ) . 'assets/public/js/script.js', array('jquery'), '1.0', true );
-		// wp_enqueue_script( 'opagen-effective-script-magicscroll', plugin_dir_url( __FILE__ ) . 'assets/public/js/magicscroll.js', array('jquery'), '1.0', true );
-		// wp_enqueue_script( 'opagen-effective-script-main', plugin_dir_url( __FILE__ ) . 'assets/public/js/main.script.js', array('jquery'), '1.0', true );
 	}
 
 	//admin-icon

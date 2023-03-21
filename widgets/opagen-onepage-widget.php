@@ -28,128 +28,63 @@ class OPAGEN_Effective_widgets extends Widget_Base {
 		return ['nav' , 'one page nav', 'menu' , 'animation' , 'nav menu'];
 	}
 	
-	public function select_elementor_page( $type ) {
-		$args  = [
-			'sk_tax_query'      => [
-				[
-					'taxonomy' => 'elementor_library_type',
-					'field'    => 'slug',
-					'terms'    => $type,
-				],
-			],
-			'post_type'      => 'elementor_library',
-			'posts_per_page' => -1,
-		];
-		$query = new \WP_Query( $args );
-		$posts = $query->posts;
-		foreach ( $posts as $post ) {
-			$items[ $post->ID ] = $post->post_title;
-		}
-		if ( empty( $items ) ) {
-			$items = [];
-		}
-		return $items;
-	}
-
 	protected function register_controls() {
 
 		$this->start_controls_section(
 			'contentSection',
 			[
-				'label' => esc_html__( 'Loader Content', 'opn-one-page-navigation' ),
+				'label' => esc_html__( 'One Page Content', 'opn-one-page-navigation' ),
 				'tab' => Controls_Manager::TAB_CONTENT,
 			]
 		);
-
-		// Repeater start
 		$repeater = new \Elementor\Repeater();
 		$repeater->add_control(
-			'opagen_social_type',
+			'list_title',
 			[
-				'label'   => esc_html__( 'Networks', 'opn-one-page-navigation' ),
-				'type'    => Controls_Manager::SELECT,
-				'options' => [
-					'facebook'    => esc_html__( 'Facebook', 'opn-one-page-navigation' ),
-					'twitter'     => esc_html__( 'Twitter', 'opn-one-page-navigation' ),
-				],
-				'default' => 'facebook',
+				'label' => esc_html__( 'Section ID', 'opn-one-page-navigation' ),
+				'type' => \Elementor\Controls_Manager::TEXT,
+				'default' => esc_html__( 'List Title' , 'opn-one-page-navigation' ),
+				'label_block' => true,
 			]
 		);
-		// Control add start
 		$repeater->add_control(
-			'sk_content_type',
+			'list_title2',
 			[
-				'label'   => __( 'Type', 'opn-one-page-navigation' ),
-				'type'    => Controls_Manager::SELECT,
-				'options' => [
-					'plain_content' => __( 'Plain/ HTML Text', 'opn-one-page-navigation' ),
-					'saved_section' => __( 'Saved Section', 'opn-one-page-navigation' ),
-					'saved_page'    => __( 'Saved Page', 'opn-one-page-navigation' ),
-				],
-				'default' => 'plain_content',
+				'label' => esc_html__( 'Title', 'opn-one-page-navigation' ),
+				'type' => \Elementor\Controls_Manager::TEXT,
+				'default' => esc_html__( 'List Title' , 'opn-one-page-navigation' ),
+				'label_block' => true,
 			]
 		);
-		$saved_sections = ['0' => __( 'Choose Section', 'opn-one-page-navigation' )];
-		$saved_sections = $saved_sections + $this->select_elementor_page( 'section' );
 
 		$repeater->add_control(
-			'sk_saved_section',
+			'list_color',
 			[
-				'label'     => __( 'Sections', 'opn-one-page-navigation' ),
-				'type'      => Controls_Manager::SELECT,
-				'options'   => $saved_sections,
-				'default'   => '0',
-				'condition' => [
-					'sk_content_type' => 'saved_section',
+				'label' => esc_html__( 'Color', 'opn-one-page-navigation' ),
+				'type' => \Elementor\Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} {{CURRENT_ITEM}}' => 'color: {{VALUE}}'
 				],
 			]
 		);
 
-		$saved_page = ['0' => __( '--- Select Page ---', 'opn-one-page-navigation' )];
-		$saved_page = $saved_page + $this->select_elementor_page( 'page' );
-
-		$repeater->add_control(
-			'sk_saved_pages',
-			[
-				'label'     => __( 'Pages', 'opn-one-page-navigation' ),
-				'type'      => Controls_Manager::SELECT,
-				'options'   => $saved_page,
-				'default'   => '0',
-				'condition' => [
-					'sk_content_type' => 'saved_page',
-				],
-			]
-		);
-		// Control add end
 		$this->add_control(
-			'opagen_all_social_btn',
+			'list',
 			[
+				'label' => esc_html__( 'Repeater List', 'opn-one-page-navigation' ),
 				'type' => \Elementor\Controls_Manager::REPEATER,
 				'fields' => $repeater->get_controls(),
 				'default' => [
 					[
-						'opagen_social_icons'    => [
-							'value'   => 'fab fa-facebook',
-							'library' => 'fa-brands',
-						],
-						'opagen_social_type' => 'facebook',
+						'list_title' => esc_html__( 'Title #1', 'opn-one-page-navigation' ),
+						'list_content' => esc_html__( 'Item content. Click the edit button to change this text.', 'opn-one-page-navigation' ),
 					],
 					[
-						'opagen_social_icons'    => [
-							'value'   => 'fab fa-twitter',
-							'library' => 'fa-brands',
-						],
-						'opagen_social_type' => 'twitter',
-					],
-					[
-						'opagen_social_icons'    => [
-							'value'   => 'fab fa-linkedin',
-							'library' => 'fa-brands',
-						],
-						'opagen_social_type' => 'linkedin',
+						'list_title' => esc_html__( 'Title #2', 'opn-one-page-navigation' ),
+						'list_content' => esc_html__( 'Item content. Click the edit button to change this text.', 'opn-one-page-navigation' ),
 					],
 				],
-				'title_field' => '{{{ opagen_social_type }}}',
+				'title_field' => '{{{ list_title }}}',
 			]
 		);
 		$this->end_controls_section();
@@ -157,39 +92,38 @@ class OPAGEN_Effective_widgets extends Widget_Base {
 
 	protected function render() {
 		$settings = $this->get_settings_for_display();
-		// echo sk_my_plugin()->frontend->get_builder_content_for_display( $settings['sk_saved_section'] );
+		if ( $settings['list'] ) {
+			echo '<dl>';
+			foreach (  $settings['list'] as $item ) {
+				echo '<div class="elementor-repeater-item-' . esc_attr( $item['_id'] ) . '">';
+				echo '<a href="#'.$item['list_title'].'" aria-expanded="true">'.$item['list_title2'].'</a>';
+				echo '</div>';
+			}
+			echo '</dl>';
+		}
 		?>
-		<section class="panel">content</section>
-		<section class="module_3_wrapper scroll">
-			<div class="module_3">
-				<div class="slides">
-					<div class="flex">
-						<div class="flex-child"><?php echo sk_my_plugin()->frontend->get_builder_content_for_display( $settings['sk_saved_section'] ); ?></div>
-					</div>
-				</div>
-				<div class="slides">
-					<div class="flex">
-						<div class="flex-child">slide 2 left content</div>
-					</div>
-				</div>
-				<div class="slides">
-					<div class="flex">
-						<div class="flex-child">slide 3 left content</div>
-					</div>
-				</div>
-				<div class="slides">
-					<div class="flex">
-						<div class="flex-child">slide 4 left content</div>
-					</div>
-				</div>
-				<div class="slides">
-					<div class="flex">
-						<div class="flex-child">slide 5 left content</div>
-					</div>
-				</div>
-			</div>
-		</section>
-		<section class="panel">content</section>
+    <div id="section1" class="section">
+        <div class="text-wr">
+            <h1 class="title">
+                <div class="title-top">Slide Nav Example</div>
+            </h1>
+        </div>
+    </div>
+    <div id="section2" class="section">
+        <div class="text-wr">
+            <h1 class="title">Section 2</h1>
+        </div>
+    </div>
+    <div id="section3" class="section">
+        <div class="text-wr">
+            <h1 class="title">Section 3</h1>
+        </div>
+    </div>
+    <div id="section4" class="section">
+        <div class="text-wr">
+            <h1 class="title">Section 4</h1>
+        </div>
+    </div>
 		<?php
 	}
 }
