@@ -62,6 +62,10 @@ class Classopageneffective {
 	}
 
 	//admin-icon
+	public function opagen_all_assets_for_the_admin(){
+		wp_enqueue_style( 'opagen-effective-eestyle', plugin_dir_url( __FILE__ ) . 'assets/public/css/style.css', null, '1.0', 'all' );
+	}
+	//admin-icon
 	public function opagen_all_assets_for_elementor_editor_admin(){
 		$all_css_js_file = array(
 			'effective-admin-main' => array('opagen_path_admin_define'=>OPAGEN_ASFSK_ASSETS_ADMIN_DIR_FILE . '/css/icon.css'),
@@ -74,6 +78,7 @@ class Classopageneffective {
 	public function __construct() {
 
 		// For public assets
+		add_action('admin_enqueue_scripts', [$this, 'opagen_all_assets_for_the_admin']);
 		add_action('wp_enqueue_scripts', [$this, 'opagen_all_assets_for_the_public']);
 
 		// For Elementor Editor
