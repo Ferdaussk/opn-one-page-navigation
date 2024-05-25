@@ -1,4 +1,4 @@
-.opagen-effective-icon::after {
+.onepagenav-effective-icon::after {
   content: 'bwd' !important;
   position: absolute !important;
   right: 7px;
@@ -21,3 +21,31 @@
 #elementor-panel-category-bwdthebest_general_category .elementor-panel-category-title:before{
   -webkit-text-fill-color: #7a7a7a;
 }
+
+
+@font-face {
+  font-display: auto;
+  font-family: "BWD";
+  font-style: normal;
+  font-weight: 400;
+  src: url("../font/bwd.eot?1679815195849");
+  src: url("../font/bwd.eot?#iefix") format("embedded-opentype"), 
+       url("../font/bwd.woff2?1679815195849") format("woff2"), 
+       url("../font/bwd.woff?1679815195849") format("woff"), 
+       url("../font/bwd.ttf?1679815195849") format("truetype"), 
+       url("../font/bwd.svg?1679815195849#Iconly") format("svg");
+}
+
+.onepagenav-effective-icon::before {
+  content: "\e000";
+   display: inline-block;
+  font-family: "BWD" !important;
+  font-weight: 400;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  line-height: 1;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+}
+

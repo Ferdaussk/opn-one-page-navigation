@@ -46,473 +46,370 @@ class OPAGEN_Effective_widgets extends Widget_Base {
 		$repeater->add_control(
 			'section_title',
 			[
-				'label'                 => __('Section Title', 'opn-one-page-navigation'),
-				'type'                  => Controls_Manager::TEXT,
-				'dynamic'               => [
-					'active'            => true,
+				'label' => esc_html__('Section Title', 'opn-one-page-navigation'),
+				'type' => Controls_Manager::TEXT,
+				'dynamic' => [
+					'active' => true,
 				],
-				'default'               => __('Section Title', 'opn-one-page-navigation'),
+				'default' => esc_html__('Section Title', 'opn-one-page-navigation'),
 			]
 		);
 		$repeater->add_control(
 			'section_id',
 			[
-				'label'                 => __('Section ID', 'opn-one-page-navigation'),
-				'type'                  => Controls_Manager::TEXT,
-				'dynamic'               => [
-					'active'            => true,
+				'label' => esc_html__('Section ID', 'opn-one-page-navigation'),
+				'type' => Controls_Manager::TEXT,
+				'dynamic' => [
+					'active' => true,
 				],
-				'default'               => '',
+				'default' => '',
+			]
+		);
+		$repeater->add_control(
+			'bwdopn_choose_icon',
+			[
+				'label'   => esc_html__( 'Choose Icon', 'effective-lottie-animation' ),
+				'type'    => Controls_Manager::SELECT,
+				'options' => [
+					'fontawesome'  => esc_html__( 'FontAwesome', 'effective-lottie-animation' ),
+					'lottie' => esc_html__( 'Lottie', 'effective-lottie-animation' ),
+					'lord' => esc_html__( 'Lord', 'effective-lottie-animation' ),
+				],
+				'default' => 'fontawesome',
 			]
 		);
 		$repeater->add_control(
 			'dot_icon_new',
 			[
-				'label'                 => __('Navigation Dot', 'opn-one-page-navigation'),
-				'type'                  => Controls_Manager::ICONS,
+				'label' => esc_html__('Navigation Dot', 'opn-one-page-navigation'),
+				'type' => Controls_Manager::ICONS,
 				'fa4compatibility' => 'dot_icon',
 				'default' => [
 					'value' => 'fas fa-circle',
 					'library' => 'fa-solid',
+				],
+				'condition' => [
+					'bwdopn_choose_icon' => 'fontawesome',
+				],
+			]
+		);
+		$repeater->add_control(
+			'bwdopn_lottie_url',
+			[
+				'label'       => __( 'Animation JSON URL', 'effective-lottie-animation' ),
+				'type'        => Controls_Manager::TEXT,
+				'dynamic'     => array( 'active' => true ),
+				'default' 		=> 'https://assets4.lottiefiles.com/packages/lf20_DW2u8OuYdH.json',
+				'description' => 'Get URL/JSON file from <a href="https://lottiefiles.com/featured" target="_blank">here...</a>',
+				'label_block' => true,
+				'condition' => [
+					'bwdopn_choose_icon' => 'lottie',
+				],
+			]
+		);
+		$repeater->add_control(
+			'bwdopn_lord_url',
+			[
+				'label'       => __( 'Animation JSON URL', 'effective-lottie-animation' ),
+				'type'        => Controls_Manager::TEXT,
+				'dynamic'     => array( 'active' => true ),
+				'default' 		=> 'https://cdn.lordicon.com/mrjuyheh.json',
+				'description' => 'Get URL/JSON file from <a href="https://lordicon.com/icons" target="_blank">here...!!</a> Follow <a href="https://prnt.sc/G0sKSPQLyi78" target="_blank">here...!!!</a>',
+				'label_block' => true,
+				'condition' => [
+					'bwdopn_choose_icon' => 'lord',
 				],
 			]
 		);
 		$this->add_control(
 			'nav_dots',
 			[
-				'label'                 => '',
-				'type'                  => Controls_Manager::REPEATER,
-				'default'               => [
+				'label' => '',
+				'type' => Controls_Manager::REPEATER,
+				'default' => [
 					[
-						'section_title'   => __('Section #1', 'opn-one-page-navigation'),
-						'section_id'      => 'section1',
-						'dot_icon'        => 'fa fa-circle',
+						'section_title' => esc_html__('Section #1', 'opn-one-page-navigation'),
+						'section_id' => 'section1',
+						'dot_icon' => 'fa fa-circle',
 					],
 					[
-						'section_title'   => __('Section #2', 'opn-one-page-navigation'),
-						'section_id'      => 'section2',
-						'dot_icon'        => 'fa fa-circle',
+						'section_title' => esc_html__('Section #2', 'opn-one-page-navigation'),
+						'section_id' => 'section2',
+						'dot_icon' => 'fa fa-circle',
 					],
 					[
-						'section_title'   => __('Section #3', 'opn-one-page-navigation'),
-						'section_id'      => 'section3',
-						'dot_icon'        => 'fa fa-circle',
+						'section_title' => esc_html__('Section #3', 'opn-one-page-navigation'),
+						'section_id' => 'section3',
+						'dot_icon' => 'fa fa-circle',
 					],
 				],
-				'fields'                =>  $repeater->get_controls(),
-				'title_field'           => '{{{ section_title }}}',
+				'fields' => $repeater->get_controls(),
+				'title_field' => '{{{ section_title }}}',
 			]
 		);
+		
+		$this->add_control(
+			'opn_nav_horizontal_align',
+			[
+				'label' => esc_html__( 'Horizontal Alignment', 'opn-one-page-navigation' ),
+				'type' => \Elementor\Controls_Manager::CHOOSE,
+				'options' => [
+					'left' => [
+						'title' => esc_html__( 'Left', 'opn-one-page-navigation' ),
+						'icon' => 'eicon-h-align-left',
+					],
+					'center' => [
+						'title' => esc_html__( 'Center', 'opn-one-page-navigation' ),
+						'icon' => 'eicon-h-align-center',
+					],
+					'right' => [
+						'title' => esc_html__( 'Right', 'opn-one-page-navigation' ),
+						'icon' => 'eicon-h-align-right',
+					],
+				],
+				'default' => 'right',
+				'toggle' => true,
+				'prefix_class' => 'bwdopn-hoalign-',
+			]
+		);
+		
+		$this->add_control(
+			'opn_nav_vertical_align',
+			[
+				'label' => esc_html__( 'Vertical Alignment', 'opn-one-page-navigation' ),
+				'type' => \Elementor\Controls_Manager::CHOOSE,
+				'options' => [
+					'top' => [
+						'title' => esc_html__( 'Top', 'opn-one-page-navigation' ),
+						'icon' => 'eicon-v-align-top',
+					],
+					'middle' => [
+						'title' => esc_html__( 'Middle', 'opn-one-page-navigation' ),
+						'icon' => ' eicon-v-align-middle',
+					],
+					'bottom' => [
+						'title' => esc_html__( 'Bottom', 'opn-one-page-navigation' ),
+						'icon' => 'eicon-v-align-bottom',
+					],
+				],
+				'default' => 'middle',
+				'toggle' => true,
+				'prefix_class' => 'bwdopn-vertical-align-',
+			]
+		);
+		
 		$this->end_controls_section();
 
-		/**
-		 * 
-		 * @Here goes to start all settings for my One Page Navigation
-		 * 
-		 */
 		$this->start_controls_section(
 			'section_onepage_nav_settings',
 			[
-				'label'                 => __('Settings', 'opn-one-page-navigation'),
+				'label' => esc_html__('Settings', 'opn-one-page-navigation'),
 			]
 		);
 		$this->add_control(
 			'nav_tooltip',
 			[
-				'label'                 => __('Tooltip', 'opn-one-page-navigation'),
-				'description'           => __('Show tooltip on hover', 'opn-one-page-navigation'),
-				'type'                  => Controls_Manager::SWITCHER,
-				'default'               => 'yes',
-				'label_on'              => __('Yes', 'opn-one-page-navigation'),
-				'label_off'             => __('No', 'opn-one-page-navigation'),
-				'return_value'          => 'yes',
+				'label' => esc_html__('Enable Tooltip', 'opn-one-page-navigation'),
+				'description' => esc_html__('Show tooltip on hover', 'opn-one-page-navigation'),
+				'type' => Controls_Manager::SWITCHER,
+				'default' => 'yes',
+				'label_on' => esc_html__('Yes', 'opn-one-page-navigation'),
+				'label_off' => esc_html__('No', 'opn-one-page-navigation'),
+				'return_value' => 'yes',
 			]
 		);
 		$this->add_control(
 			'tooltip_arrow',
 			[
-				'label'                 => __('Tooltip Arrow', 'opn-one-page-navigation'),
-				'type'                  => Controls_Manager::SWITCHER,
-				'default'               => 'yes',
-				'label_on'              => __('Show', 'opn-one-page-navigation'),
-				'label_off'             => __('Hide', 'opn-one-page-navigation'),
-				'return_value'          => 'yes',
-				'condition'             => [
+				'label' => esc_html__('Tooltip Arrow', 'opn-one-page-navigation'),
+				'type' => Controls_Manager::SWITCHER,
+				'default' => 'yes',
+				'label_on' => esc_html__('Show', 'opn-one-page-navigation'),
+				'label_off' => esc_html__('Hide', 'opn-one-page-navigation'),
+				'return_value' => 'yes',
+				'condition' => [
 					'nav_tooltip'   => 'yes',
 				],
 			]
 		);
 		$this->add_control(
-			'scroll_wheel',
-			[
-				'label'                 => __('Scroll Wheel', 'opn-one-page-navigation'),
-				'description'           => __('Use mouse wheel to navigate from one row to another', 'opn-one-page-navigation'),
-				'type'                  => Controls_Manager::SWITCHER,
-				'default'               => 'off',
-				'label_on'              => __('On', 'opn-one-page-navigation'),
-				'label_off'             => __('Off', 'opn-one-page-navigation'),
-				'return_value'          => 'on',
-			]
-		);
-		$this->add_control(
-			'scroll_touch',
-			[
-				'label'                 => __('Touch Swipe', 'opn-one-page-navigation'),
-				'description'           => __('Use touch swipe to navigate from one row to another in mobile devices', 'opn-one-page-navigation'),
-				'type'                  => Controls_Manager::SWITCHER,
-				'default'               => 'off',
-				'label_on'              => __('On', 'opn-one-page-navigation'),
-				'label_off'             => __('Off', 'opn-one-page-navigation'),
-				'return_value'          => 'on',
-				'condition'             => [
-					'scroll_wheel'   => 'on',
-				],
-			]
-		);
-		$this->add_control(
-			'scroll_keys',
-			[
-				'label'                 => __('Scroll Keys', 'opn-one-page-navigation'),
-				'description'           => __('Use UP and DOWN arrow keys to navigate from one row to another', 'opn-one-page-navigation'),
-				'type'                  => Controls_Manager::SWITCHER,
-				'default'               => 'off',
-				'label_on'              => __('On', 'opn-one-page-navigation'),
-				'label_off'             => __('Off', 'opn-one-page-navigation'),
-				'return_value'          => 'on',
-			]
-		);
-		$this->add_control(
 			'top_offset',
 			[
-				'label'                 => __('Row Top Offset', 'opn-one-page-navigation'),
-				'type'                  => Controls_Manager::SLIDER,
-				'default'               => ['size' => '0'],
-				'range'                 => [
+				'label' => esc_html__('Row Top Offset', 'opn-one-page-navigation'),
+				'type' => Controls_Manager::SLIDER,
+				'default' => ['size' => '40'],
+				'range' => [
 					'px' => [
-						'min'   => 0,
-						'max'   => 300,
-						'step'  => 1,
+						'min' => 0,
+						'max' => 300,
+						'step' => 1,
 					],
 				],
-				'size_units'            => ['px'],
+				'size_units' => ['px'],
 			]
 		);
 		$this->add_control(
 			'scrolling_speed',
 			[
-				'label'                 => __('Scrolling Speed', 'opn-one-page-navigation'),
-				'type'                  => Controls_Manager::NUMBER,
-				'default'               => '700',
+				'label' => esc_html__('Scrolling Speed', 'opn-one-page-navigation'),
+				'type' => Controls_Manager::NUMBER,
+				'default' => '700',
 			]
 		);
 		$this->end_controls_section();
 
-		/**
-		 * 
-		 * Here goes to start style tab section
-		 * 
-		 */
 		$this->start_controls_section(
 			'section_nav_box_style',
 			[
-				'label'                 => __('Navigation Box', 'opn-one-page-navigation'),
-				'tab'                   => Controls_Manager::TAB_STYLE,
-			]
-		);
-		$this->add_control(
-			'heading_alignment',
-			[
-				'label'                 => __('Alignment', 'opn-one-page-navigation'),
-				'type'                  => Controls_Manager::CHOOSE,
-				'options'               => [
-					'top'          => [
-						'title'    => __('Top', 'opn-one-page-navigation'),
-						'icon'     => 'eicon-v-align-top',
-					],
-					'bottom'       => [
-						'title'    => __('Bottom', 'opn-one-page-navigation'),
-						'icon'     => 'eicon-v-align-bottom',
-					],
-					'left'         => [
-						'title'    => __('Left', 'opn-one-page-navigation'),
-						'icon'        => 'eicon-h-align-left',
-					],
-					'right'        => [
-						'title'    => __('Right', 'opn-one-page-navigation'),
-						'icon'        => 'eicon-h-align-right',
-					],
-				],
-				'default'               => 'right',
-				'prefix_class'          => 'nav-align-',
-				'frontend_available'    => true,
-				'selectors'             => [
-					'{{WRAPPER}} .opagen-caldera-form-heading' => 'text-align: {{VALUE}};',
-				],
+				'label' => esc_html__('Navigation Item', 'opn-one-page-navigation'),
+				'tab' => Controls_Manager::TAB_STYLE,
 			]
 		);
 		$this->add_group_control(
 			\Elementor\Group_Control_Background::get_type(),
 			[
-				'name'              => 'nav_container_background',
-				'types'             => ['classic', 'gradient'],
-				'selector'          => '{{WRAPPER}} .opagen-one-page-nav',
+				'name' => 'nav_container_background',
+				'types' => ['classic', 'gradient'],
+				'selector' => '{{WRAPPER}} .bwdopn-nav-dot',
+			]
+		);
+		
+		// $this->add_responsive_control(
+		// 	'bwdopn_nav_item_size',
+		// 	[
+		// 		'label' => esc_html__( 'Item Size', 'opn-one-page-navigation' ),
+		// 		'type' => \Elementor\Controls_Manager::SLIDER,
+		// 		'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+		// 		// 'default' => [
+		// 		// 	'unit' => 'px',
+		// 		// 	'size' => 30,
+		// 		// ],
+		// 		'selectors' => [
+		// 			'{{WRAPPER}} .bwdopn-nav-dot' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
+		// 		],
+		// 	]
+		// );
+		
+		$this->add_responsive_control(
+			'bwdopn_nav_item_gap',
+			[
+				'label' => esc_html__( 'Item Gap', 'opn-one-page-navigation' ),
+				'type' => \Elementor\Controls_Manager::SLIDER,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'selectors' => [
+					'{{WRAPPER}} .bwdopn-one-page-nav' => 'gap: {{SIZE}}{{UNIT}};',
+				],
 			]
 		);
 		$this->add_group_control(
 			\Elementor\Group_Control_Border::get_type(),
 			[
-				'name'                  => 'nav_container_border',
-				'label'                 => __('Border', 'opn-one-page-navigation'),
-				'placeholder'           => '1px',
-				'default'               => '1px',
-				'selector'              => '{{WRAPPER}} .opagen-one-page-nav'
-			]
-		);
-		$this->add_control(
-			'nav_container_border_radius',
-			[
-				'label'                 => __('Border Radius', 'opn-one-page-navigation'),
-				'type'                  => Controls_Manager::DIMENSIONS,
-				'size_units'            => ['px', '%'],
-				'selectors'             => [
-					'{{WRAPPER}} .opagen-one-page-nav' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-				],
+				'name' => 'bwdopn_nav_item_border',
+				'selector' => '{{WRAPPER}} .bwdopn-nav-dot',
 			]
 		);
 		$this->add_responsive_control(
-			'nav_container_margin',
+			'nav_container_border_radius',
 			[
-				'label'                 => __('Margin', 'opn-one-page-navigation'),
-				'type'                  => Controls_Manager::DIMENSIONS,
-				'size_units'            => ['px', '%'],
-				'selectors'             => [
-					'{{WRAPPER}} .opagen-one-page-nav-container' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				'label' => esc_html__('Border Radius', 'opn-one-page-navigation'),
+				'type' => Controls_Manager::DIMENSIONS,
+				'size_units' => ['px', '%'],
+				'selectors' => [
+					'{{WRAPPER}} .bwdopn-nav-dot' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
 		$this->add_responsive_control(
 			'nav_container_padding',
 			[
-				'label'                 => __('Padding', 'opn-one-page-navigation'),
-				'type'                  => Controls_Manager::DIMENSIONS,
-				'size_units'            => ['px', '%'],
-				'selectors'             => [
-					'{{WRAPPER}} .opagen-one-page-nav' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				'label' => esc_html__('Padding', 'opn-one-page-navigation'),
+				'type' => Controls_Manager::DIMENSIONS,
+				'size_units' => ['px', '%'],
+				'selectors' => [
+					'{{WRAPPER}} .bwdopn-nav-dot' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
 		$this->add_group_control(
 			\Elementor\Group_Control_Box_Shadow::get_type(),
 			[
-				'name'                  => 'nav_container_box_shadow',
-				'selector'              => '{{WRAPPER}} .opagen-one-page-nav',
-				'separator'             => 'before',
+				'name' => 'nav_container_box_shadow',
+				'selector' => '{{WRAPPER}} .bwdopn-nav-dot',
+				'separator' => 'before',
 			]
 		);
 		$this->end_controls_section();
 
-		/**
-		 * 
-		 * @Here goes to style for the dots
-		 * 
-		 */
-
 		$this->start_controls_section(
 			'section_dots_style',
 			[
-				'label'                 => __('Navigation Dots', 'opn-one-page-navigation'),
-				'tab'                   => Controls_Manager::TAB_STYLE,
+				'label' => esc_html__('Navigation Dots', 'opn-one-page-navigation'),
+				'tab' => Controls_Manager::TAB_STYLE,
 			]
 		);
-		$this->add_responsive_control(
-			'dots_size',
-			[
-				'label'                 => __('Size', 'opn-one-page-navigation'),
-				'type'                  => Controls_Manager::SLIDER,
-				'default'               => ['size' => '10'],
-				'range'                 => [
-					'px' => [
-						'min'   => 5,
-						'max'   => 60,
-						'step'  => 1,
-					],
-				],
-				'size_units'            => ['px'],
-				'selectors'             => [
-					'{{WRAPPER}} .opagen-nav-dot' => 'font-size: {{SIZE}}{{UNIT}};',
-				],
-			]
+		$this->start_controls_tabs(
+			'bwdopn_nav_do_style_tabs'
 		);
-		$this->add_responsive_control(
-			'dots_spacing',
-			[
-				'label'                 => __('Spacing', 'opn-one-page-navigation'),
-				'type'                  => Controls_Manager::SLIDER,
-				'default'               => ['size' => '10'],
-				'range'                 => [
-					'px' => [
-						'min'   => 2,
-						'max'   => 30,
-						'step'  => 1,
-					],
-				],
-				'size_units'            => ['px'],
-				'selectors'             => [
-					'{{WRAPPER}}.nav-align-right .opagen-one-page-nav-item, {{WRAPPER}}.nav-align-left .opagen-one-page-nav-item' => 'margin-bottom: {{SIZE}}{{UNIT}};',
-					'{{WRAPPER}}.nav-align-top .opagen-one-page-nav-item, {{WRAPPER}}.nav-align-bottom .opagen-one-page-nav-item' => 'margin-right: {{SIZE}}{{UNIT}}; margin-left: 0',
-					'.rtl {{WRAPPER}}.nav-align-top .opagen-one-page-nav-item, {{WRAPPER}}.nav-align-bottom .opagen-one-page-nav-item' => 'margin-left: {{SIZE}}{{UNIT}};margin-right: 0;',
-				],
-			]
-		);
-		$this->add_responsive_control(
-			'dots_padding',
-			[
-				'label'                 => __('Padding', 'opn-one-page-navigation'),
-				'type'                  => Controls_Manager::DIMENSIONS,
-				'size_units'            => ['px', '%'],
-				'selectors'             => [
-					'{{WRAPPER}} .opagen-nav-dot-wrap' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-				],
-			]
-		);
-		$this->add_group_control(
-			\Elementor\Group_Control_Box_Shadow::get_type(),
-			[
-				'name'                  => 'dots_box_shadow',
-				'selector'              => '{{WRAPPER}} .opagen-nav-dot-wrap',
-				'separator'             => 'before',
-			]
-		);
-		$this->start_controls_tabs('tabs_dots_style');
 
 		$this->start_controls_tab(
-			'tab_dots_normal',
+			'bwdopn_nav_dot_normal_tab',
 			[
-				'label'                 => __('Normal', 'opn-one-page-navigation'),
+				'label' => esc_html__( 'Normal', 'opn-one-page-navigation' ),
 			]
 		);
 		$this->add_control(
-			'dots_color_normal',
+			'bwdopn_nav_item_color',
 			[
-				'label'                 => __('Color', 'opn-one-page-navigation'),
-				'type'                  => Controls_Manager::COLOR,
-				'default'               => '',
-				'selectors'             => [
-					'{{WRAPPER}} .opagen-nav-dot' => 'color: {{VALUE}}',
+				'label' => esc_html__( 'Icon Color', 'opn-one-page-navigation' ),
+				'type' => \Elementor\Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .bwdopn-nav-dot' => 'color: {{VALUE}}',
 				],
 			]
 		);
-		$this->add_control(
-			'dots_bg_color_normal',
+		$this->add_responsive_control(
+			'bwdopn_nav_item_icon_size',
 			[
-				'label'                 => __('Background Color', 'opn-one-page-navigation'),
-				'type'                  => Controls_Manager::COLOR,
-				'default'               => '',
-				'selectors'             => [
-					'{{WRAPPER}} .opagen-nav-dot-wrap' => 'background-color: {{VALUE}}',
-				],
-			]
-		);
-		$this->add_group_control(
-			\Elementor\Group_Control_Border::get_type(),
-			[
-				'name'                  => 'dots_border',
-				'label'                 => __('Border', 'opn-one-page-navigation'),
-				'placeholder'           => '1px',
-				'default'               => '1px',
-				'selector'              => '{{WRAPPER}} .opagen-nav-dot-wrap'
-			]
-		);
-		$this->add_control(
-			'dots_border_radius',
-			[
-				'label'                 => __('Border Radius', 'opn-one-page-navigation'),
-				'type'                  => Controls_Manager::DIMENSIONS,
-				'size_units'            => ['px', '%'],
-				'selectors'             => [
-					'{{WRAPPER}} .opagen-nav-dot-wrap' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				'label' => esc_html__( 'Icon Size', 'opn-one-page-navigation' ),
+				'description' => esc_html__( 'Note: To increase lord and lottie icon font go to navigation item section then item size.', 'opn-one-page-navigation' ),
+				'type' => \Elementor\Controls_Manager::SLIDER,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'selectors' => [
+					'{{WRAPPER}} .bwdopn-nav-dot' => 'font-size: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
 		$this->end_controls_tab();
-
 		$this->start_controls_tab(
-			'tab_dots_hover',
+			'bwdopn_nav_dot_hover_tab',
 			[
-				'label'                 => __('Hover', 'opn-one-page-navigation'),
+				'label' => esc_html__( 'Hover', 'opn-one-page-navigation' ),
 			]
 		);
 		$this->add_control(
-			'dots_color_hover',
+			'bwdopn_nav_item_hover_color',
 			[
-				'label'                 => __('Color', 'opn-one-page-navigation'),
-				'type'                  => Controls_Manager::COLOR,
-				'default'               => '',
-				'selectors'             => [
-					'{{WRAPPER}} .opagen-one-page-nav-item .opagen-nav-dot-wrap:hover .opagen-nav-dot' => 'color: {{VALUE}}',
-				],
-			]
-		);
-		$this->add_control(
-			'dots_bg_color_hover',
-			[
-				'label'                 => __('Background Color', 'opn-one-page-navigation'),
-				'type'                  => Controls_Manager::COLOR,
-				'default'               => '',
-				'selectors'             => [
-					'{{WRAPPER}} .opagen-one-page-nav-item .opagen-nav-dot-wrap:hover' => 'background-color: {{VALUE}}',
-				],
-			]
-		);
-		$this->add_control(
-			'dots_border_color_hover',
-			[
-				'label'                 => __('Border Color', 'opn-one-page-navigation'),
-				'type'                  => Controls_Manager::COLOR,
-				'default'               => '',
-				'selectors'             => [
-					'{{WRAPPER}} .opagen-one-page-nav-item .opagen-nav-dot-wrap:hover' => 'border-color: {{VALUE}}',
+				'label' => esc_html__( 'Icon Color', 'opn-one-page-navigation' ),
+				'type' => \Elementor\Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .bwdopn-nav-dot:hover' => 'color: {{VALUE}}',
 				],
 			]
 		);
 		$this->end_controls_tab();
-
 		$this->start_controls_tab(
-			'tab_dots_active',
+			'bwdopn_nav_dot_active_tab',
 			[
-				'label'                 => __('Active', 'opn-one-page-navigation'),
+				'label' => esc_html__( 'Active', 'opn-one-page-navigation' ),
 			]
 		);
 		$this->add_control(
-			'dots_color_active',
+			'bwdopn_nav_item_active_color',
 			[
-				'label'                 => __('Color', 'opn-one-page-navigation'),
-				'type'                  => Controls_Manager::COLOR,
-				'default'               => '',
-				'selectors'             => [
-					'{{WRAPPER}} .opagen-one-page-nav-item.active .opagen-nav-dot' => 'color: {{VALUE}}',
-				],
-			]
-		);
-		$this->add_control(
-			'dots_bg_color_active',
-			[
-				'label'                 => __('Background Color', 'opn-one-page-navigation'),
-				'type'                  => Controls_Manager::COLOR,
-				'default'               => '',
-				'selectors'             => [
-					'{{WRAPPER}} .opagen-one-page-nav-item.active .opagen-nav-dot-wrap' => 'background-color: {{VALUE}}',
-				],
-			]
-		);
-		$this->add_control(
-			'dots_border_color_active',
-			[
-				'label'                 => __('Border Color', 'opn-one-page-navigation'),
-				'type'                  => Controls_Manager::COLOR,
-				'default'               => '',
-				'selectors'             => [
-					'{{WRAPPER}} .opagen-one-page-nav-item.active .opagen-nav-dot-wrap' => 'border-color: {{VALUE}}',
+				'label' => esc_html__( 'Icon Color', 'opn-one-page-navigation' ),
+				'type' => \Elementor\Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .bwdopn-one-page-nav[data-scroll-wheel="on"] .bwdopn-one-page-nav-item.active .bwdopn-nav-dot' => 'color: {{VALUE}}',
 				],
 			]
 		);
@@ -520,46 +417,41 @@ class OPAGEN_Effective_widgets extends Widget_Base {
 		$this->end_controls_tabs();
 		$this->end_controls_section();
 
-		/**
-		 * 
-		 * @This style goes to fro tooltip section
-		 * 
-		 */
+		
 		$this->start_controls_section(
 			'section_tooltips_style',
 			[
-				'label'                 => __('Tooltip', 'opn-one-page-navigation'),
-				'tab'                   => Controls_Manager::TAB_STYLE,
-				'condition'             => [
-					'nav_tooltip'  => 'yes',
+				'label' => esc_html__('Tooltip', 'opn-one-page-navigation'),
+				'tab' => Controls_Manager::TAB_STYLE,
+				'condition' => [
+					'nav_tooltip' => 'yes',
+				],
+			]
+		);
+		$this->add_control(
+			'tooltip_text_color',
+			[
+				'label' => esc_html__('Color', 'opn-one-page-navigation'),
+				'type' => Controls_Manager::COLOR,
+				'default' => '',
+				'selectors' => [
+					'{{WRAPPER}} .bwdopn-nav-dot-tooltip-content' => 'color: {{VALUE}}',
+				],
+				'condition' => [
+					'nav_tooltip' => 'yes',
 				],
 			]
 		);
 		$this->add_control(
 			'tooltip_bg_color',
 			[
-				'label'                 => __('Background Color', 'opn-one-page-navigation'),
-				'type'                  => Controls_Manager::COLOR,
-				'default'               => '',
-				'selectors'             => [
-					'{{WRAPPER}} .opagen-nav-dot-tooltip-content' => 'background-color: {{VALUE}}',
-					'{{WRAPPER}} .opagen-nav-dot-tooltip' => 'color: {{VALUE}}',
+				'label' => esc_html__('Background Color', 'opn-one-page-navigation'),
+				'type' => Controls_Manager::COLOR,
+				'default' => '',
+				'selectors'=> [
+					'{{WRAPPER}} .bwdopn-nav-dot-tooltip-content, {{WRAPPER}} .bwdopn-nav-dot-tooltip-content::before' => 'background-color: {{VALUE}}',
 				],
-				'condition'             => [
-					'nav_tooltip'  => 'yes',
-				],
-			]
-		);
-		$this->add_control(
-			'tooltip_color',
-			[
-				'label'                 => __('Text Color', 'opn-one-page-navigation'),
-				'type'                  => Controls_Manager::COLOR,
-				'default'               => '',
-				'selectors'             => [
-					'{{WRAPPER}} .opagen-nav-dot-tooltip-content' => 'color: {{VALUE}}',
-				],
-				'condition'             => [
+				'condition' => [
 					'nav_tooltip'  => 'yes',
 				],
 			]
@@ -567,61 +459,80 @@ class OPAGEN_Effective_widgets extends Widget_Base {
 		$this->add_group_control(
 			\Elementor\Group_Control_Typography::get_type(),
 			[
-				'name'                  => 'tooltip_typography',
-				'label'                 => __('Typography', 'opn-one-page-navigation'),
-				// 'scheme'                => Typography::TYPOGRAPHY_4,
-				'selector'              => '{{WRAPPER}} .opagen-nav-dot-tooltip',
-				'condition'             => [
-					'nav_tooltip'  => 'yes',
+				'name' => 'tooltip_typography',
+				'label' => esc_html__('Typography', 'opn-one-page-navigation'),
+				'selector' => '{{WRAPPER}} .bwdopn-nav-dot-tooltip-content',
+				'condition' => [
+					'nav_tooltip' => 'yes',
+				],
+			]
+		);
+		$this->add_group_control(
+			\Elementor\Group_Control_Border::get_type(),
+			[
+				'name' => 'bwdopn_tooltip_border',
+				'selector' => '{{WRAPPER}} .bwdopn-nav-dot-tooltip .bwdopn-nav-dot-tooltip-content',
+			]
+		);
+		$this->add_responsive_control(
+			'tooltip_border_radius',
+			[
+				'label' => esc_html__('Border Radius', 'opn-one-page-navigation'),
+				'type' => Controls_Manager::DIMENSIONS,
+				'size_units' => ['px', '%'],
+				'selectors' => [
+					'{{WRAPPER}} .bwdopn-nav-dot-tooltip .bwdopn-nav-dot-tooltip-content' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
 		$this->add_responsive_control(
 			'tooltip_padding',
 			[
-				'label'                 => __('Padding', 'opn-one-page-navigation'),
-				'type'                  => Controls_Manager::DIMENSIONS,
-				'size_units'            => ['px', '%'],
-				'selectors'             => [
-					'{{WRAPPER}} .opagen-nav-dot-tooltip-content' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				'label' => esc_html__('Padding', 'opn-one-page-navigation'),
+				'type' => Controls_Manager::DIMENSIONS,
+				'size_units' => ['px', '%'],
+				'selectors' => [
+					'{{WRAPPER}} .bwdopn-nav-dot-tooltip .bwdopn-nav-dot-tooltip-content' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
 		$this->end_controls_section();
 	}
 
+
 	protected function render() {
 		$settings = $this->get_settings_for_display();
+		?>
+		<div class="bwdopn-onepage-nav-container">
+		<?php
 		if ( $settings['nav_dots'] ) {
 			foreach (  $settings['nav_dots'] as $item ) {
 				echo '<div class="elementor-repeater-item-' . esc_attr( $item['_id'] ) . '">';
-				echo '<a href="#'.$item['section_id'].'" aria-expanded="true">'.$item['section_title'].'</a>';
+				echo '<a href="#'.$item['section_id'].'" aria-expanded="true">';
+				?>
+				<span class="bwdopn-nav-dot-wrap">
+					<span class="bwdopn-nav-dot bwdopn-icon">
+						<?php if($item['bwdopn_choose_icon'] === 'lottie') : ?>
+						<lottie-player src="<?php echo esc_url( $item['bwdopn_lottie_url'] ); ?>"  background="transparent"  speed="1"  style="width: 30px; height: 30px;" loop autoplay></lottie-player>
+						<?php elseif($item['bwdopn_choose_icon'] === 'lord') : ?>
+						<lord-icon
+							src="<?php echo esc_url( $item['bwdopn_lord_url'] ); ?>"
+							trigger="loop"
+							style="width: 30px; height: 30px;"
+						</lord-icon>
+						<?php elseif($item['bwdopn_choose_icon'] === 'fontawesome') : ?>
+						<?php \Elementor\Icons_Manager::render_icon( $item['dot_icon_new'], [ 'aria-hidden' => 'true' ] ); ?>
+						<?php endif; ?>
+					</span>
+				</span>
+				<?php
+				echo '</a>';
 				echo '</div>';
 			}
 		}
 		?>
-    <div id="section1" class="section">
-			<div class="text-wr">
-				<h1 class="title">
-					<div class="title-top">Section 1</div>
-				</h1>
-			</div>
-    </div>
-    <div id="section2" class="section">
-			<div class="text-wr">
-				<h1 class="title">Section 2</h1>
-			</div>
-    </div>
-    <div id="section3" class="section">
-			<div class="text-wr">
-				<h1 class="title">Section 3</h1>
-			</div>
-    </div>
-    <div id="section4" class="section">
-			<div class="text-wr">
-				<h1 class="title">Section 4</h1>
-			</div>
-    </div>
+		</div>
+    
 		<?php
 	}
 }

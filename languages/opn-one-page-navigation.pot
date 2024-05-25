@@ -1,0 +1,293 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"Project-Id-Version: One Page Navigation\n"
+"POT-Creation-Date: 2023-04-04 10:57+0600\n"
+"PO-Revision-Date: 2023-04-04 10:57+0600\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.2\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-Flags-xgettext: --add-comments=translators:\n"
+"X-Poedit-WPHeader: opn-one-page-navigation.php\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+
+#: opagen-onepage-boots.php:52
+msgid "BWD General Group"
+msgstr ""
+
+#: opn-one-page-navigation.php:64 opn-one-page-navigation.php:79
+#, php-format
+msgid "\"%1$s\" requires \"%2$s\" version %3$s or greater."
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+#: opn-one-page-navigation.php:65 opn-one-page-navigation.php:80
+#: page-settings/opagen-onepage-manager.php:21
+#: widgets/opagen-onepage-widget.php:17 widgets/opagen-onepage-widget.php:37
+msgid "One Page Navigation"
+msgstr ""
+
+#: opn-one-page-navigation.php:66
+msgid "Elementor"
+msgstr ""
+
+#: opn-one-page-navigation.php:70 opn-one-page-navigation.php:85
+#, php-format
+msgid "%1$s"
+msgstr ""
+
+#: opn-one-page-navigation.php:81
+msgid "PHP"
+msgstr ""
+
+#: page-settings/opagen-onepage-manager.php:32
+#: widgets/opagen-onepage-widget.php:198
+msgid "Settings"
+msgstr ""
+
+#: page-settings/opagen-onepage-manager.php:40
+#: page-settings/opagen-onepage-manager.php:42
+msgid "Title"
+msgstr ""
+
+#: widgets/opagen-onepage-widget.php:13
+msgid "OnePageNavigation"
+msgstr ""
+
+#: widgets/opagen-onepage-widget.php:45 widgets/opagen-onepage-widget.php:50
+msgid "Section Title"
+msgstr ""
+
+#: widgets/opagen-onepage-widget.php:56
+msgid "Section ID"
+msgstr ""
+
+#: widgets/opagen-onepage-widget.php:67
+msgid "Choose Icon"
+msgstr ""
+
+#: widgets/opagen-onepage-widget.php:70
+msgid "FontAwesome"
+msgstr ""
+
+#: widgets/opagen-onepage-widget.php:71
+msgid "Lottie"
+msgstr ""
+
+#: widgets/opagen-onepage-widget.php:72
+msgid "Lord"
+msgstr ""
+
+#: widgets/opagen-onepage-widget.php:80
+msgid "Navigation Dot"
+msgstr ""
+
+#: widgets/opagen-onepage-widget.php:95 widgets/opagen-onepage-widget.php:109
+msgid "Animation JSON URL"
+msgstr ""
+
+#: widgets/opagen-onepage-widget.php:127
+msgid "Section #1"
+msgstr ""
+
+#: widgets/opagen-onepage-widget.php:132
+msgid "Section #2"
+msgstr ""
+
+#: widgets/opagen-onepage-widget.php:137
+msgid "Section #3"
+msgstr ""
+
+#: widgets/opagen-onepage-widget.php:150
+msgid "Horizontal Alignment"
+msgstr ""
+
+#: widgets/opagen-onepage-widget.php:154
+msgid "Left"
+msgstr ""
+
+#: widgets/opagen-onepage-widget.php:158
+msgid "Right"
+msgstr ""
+
+#: widgets/opagen-onepage-widget.php:171
+msgid "Vertical Alignment"
+msgstr ""
+
+#: widgets/opagen-onepage-widget.php:175
+msgid "Top"
+msgstr ""
+
+#: widgets/opagen-onepage-widget.php:179
+msgid "Middle"
+msgstr ""
+
+#: widgets/opagen-onepage-widget.php:183
+msgid "Bottom"
+msgstr ""
+
+#: widgets/opagen-onepage-widget.php:204
+msgid "Enable Tooltip"
+msgstr ""
+
+#: widgets/opagen-onepage-widget.php:205
+msgid "Show tooltip on hover"
+msgstr ""
+
+#: widgets/opagen-onepage-widget.php:208
+msgid "Yes"
+msgstr ""
+
+#: widgets/opagen-onepage-widget.php:209
+msgid "No"
+msgstr ""
+
+#: widgets/opagen-onepage-widget.php:216
+msgid "Tooltip Arrow"
+msgstr ""
+
+#: widgets/opagen-onepage-widget.php:219
+msgid "Show"
+msgstr ""
+
+#: widgets/opagen-onepage-widget.php:220
+msgid "Hide"
+msgstr ""
+
+#: widgets/opagen-onepage-widget.php:230
+msgid "Scroll Wheel"
+msgstr ""
+
+#: widgets/opagen-onepage-widget.php:231
+msgid "Use mouse wheel to navigate from one row to another"
+msgstr ""
+
+#: widgets/opagen-onepage-widget.php:234 widgets/opagen-onepage-widget.php:246
+#: widgets/opagen-onepage-widget.php:261
+msgid "On"
+msgstr ""
+
+#: widgets/opagen-onepage-widget.php:235 widgets/opagen-onepage-widget.php:247
+#: widgets/opagen-onepage-widget.php:262
+msgid "Off"
+msgstr ""
+
+#: widgets/opagen-onepage-widget.php:242
+msgid "Touch Swipe"
+msgstr ""
+
+#: widgets/opagen-onepage-widget.php:243
+msgid "Use touch swipe to navigate from one row to another in mobile devices"
+msgstr ""
+
+#: widgets/opagen-onepage-widget.php:257
+msgid "Scroll Keys"
+msgstr ""
+
+#: widgets/opagen-onepage-widget.php:258
+msgid "Use UP and DOWN arrow keys to navigate from one row to another"
+msgstr ""
+
+#: widgets/opagen-onepage-widget.php:269
+msgid "Row Top Offset"
+msgstr ""
+
+#: widgets/opagen-onepage-widget.php:285
+msgid "Scrolling Speed"
+msgstr ""
+
+#: widgets/opagen-onepage-widget.php:295
+msgid "Navigation Item"
+msgstr ""
+
+#: widgets/opagen-onepage-widget.php:311
+msgid "Item Size"
+msgstr ""
+
+#: widgets/opagen-onepage-widget.php:327
+msgid "Item Gap"
+msgstr ""
+
+#: widgets/opagen-onepage-widget.php:345 widgets/opagen-onepage-widget.php:511
+msgid "Border Radius"
+msgstr ""
+
+#: widgets/opagen-onepage-widget.php:356 widgets/opagen-onepage-widget.php:522
+msgid "Padding"
+msgstr ""
+
+#: widgets/opagen-onepage-widget.php:377
+msgid "Navigation Dots"
+msgstr ""
+
+#: widgets/opagen-onepage-widget.php:388
+msgid "Normal"
+msgstr ""
+
+#: widgets/opagen-onepage-widget.php:394 widgets/opagen-onepage-widget.php:423
+#: widgets/opagen-onepage-widget.php:440
+msgid "Icon Color"
+msgstr ""
+
+#: widgets/opagen-onepage-widget.php:404
+msgid "Icon Size"
+msgstr ""
+
+#: widgets/opagen-onepage-widget.php:405
+msgid ""
+"Note: To increase lord and lottie icon font go to navigation item section "
+"then item size."
+msgstr ""
+
+#: widgets/opagen-onepage-widget.php:417
+msgid "Hover"
+msgstr ""
+
+#: widgets/opagen-onepage-widget.php:434
+msgid "Active"
+msgstr ""
+
+#: widgets/opagen-onepage-widget.php:455
+msgid "Tooltip"
+msgstr ""
+
+#: widgets/opagen-onepage-widget.php:465
+msgid "Color"
+msgstr ""
+
+#: widgets/opagen-onepage-widget.php:479
+msgid "Background Color"
+msgstr ""
+
+#: widgets/opagen-onepage-widget.php:494
+msgid "Typography"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "https://bwdplugins.com/plugins/one-page-navigation"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid ""
+"One Page Navigation is an Elementor plugin that allows users to create a "
+"smooth scrolling effect on their website, making it easier to navigate "
+"through different sections on a single page."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Best WP Developer"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "https://bestwpdeveloper.com/"
+msgstr ""

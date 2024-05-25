@@ -57,18 +57,21 @@ class Classopageneffective {
 
 	//css-js-link-here
 	public function opagen_all_assets_for_the_public(){
-		wp_enqueue_style( 'opagen-effective-style', plugin_dir_url( __FILE__ ) . 'assets/public/css/style.css', null, '1.0', 'all' );
 		// wp_enqueue_script( 'opagen-effective-script', plugin_dir_url( __FILE__ ) . 'assets/public/js/script.js', array('jquery'), '1.0', true );
-	}
+		wp_enqueue_script( 'opagen-lottie', plugin_dir_url( __FILE__ ) . 'assets/public/js/lottie.js', array('jquery'), '1.0', true );
+		wp_enqueue_script( 'opagen-lord', plugin_dir_url( __FILE__ ) . 'assets/public/js/lord.js', array('jquery'), '1.0', true );
+		$all_css_js_file = array(
+            'opagen-main-style' => array('opagen_path_define'=>OPAGEN_ASFSK_ASSETS_PUBLIC_DIR_FILE . '/css/style.css'),
 
-	//admin-icon
-	public function opagen_all_assets_for_the_admin(){
-		wp_enqueue_style( 'opagen-effective-eestyle', plugin_dir_url( __FILE__ ) . 'assets/public/css/style.css', null, '1.0', 'all' );
+        );
+        foreach($all_css_js_file as $handle => $fileinfo){
+            wp_enqueue_style( $handle, $fileinfo['opagen_path_define'], null, '1.0', 'all');
+        }
 	}
 	//admin-icon
 	public function opagen_all_assets_for_elementor_editor_admin(){
 		$all_css_js_file = array(
-			'effective-admin-main' => array('opagen_path_admin_define'=>OPAGEN_ASFSK_ASSETS_ADMIN_DIR_FILE . '/css/icon.css'),
+			'opagen-admin-main' => array('opagen_path_admin_define'=>OPAGEN_ASFSK_ASSETS_ADMIN_DIR_FILE . '/css/icon.css'),
 		);
 		foreach($all_css_js_file as $handle => $fileinfo){
 			wp_enqueue_style( $handle, $fileinfo['opagen_path_admin_define'], null, '1.0', 'all');
@@ -78,7 +81,6 @@ class Classopageneffective {
 	public function __construct() {
 
 		// For public assets
-		add_action('admin_enqueue_scripts', [$this, 'opagen_all_assets_for_the_admin']);
 		add_action('wp_enqueue_scripts', [$this, 'opagen_all_assets_for_the_public']);
 
 		// For Elementor Editor

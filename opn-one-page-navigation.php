@@ -1,8 +1,8 @@
 <?php
 /**
  * Plugin Name: One Page Navigation
- * Description: One Page Navigation plugin for Elementor with 20+ responsive and modern preloader designs.
- * Plugin URI:  https://bwdplugins.com/plugins/opn-one-page-navigation
+ * Description: One Page Navigation is an Elementor plugin that allows users to create a smooth scrolling effect on their website, making it easier to navigate through different sections on a single page.
+ * Plugin URI:  https://bwdplugins.com/plugins/one-page-navigation
  * Version:     1.0
  * Author:      Best WP Developer
  * Author URI:  https://bestwpdeveloper.com/
